@@ -6,14 +6,14 @@ let app = express();
 //   res.sendFile(__dirname + "/index.html");
 // });
 
-// app.get("/new", (req, res) => {
-//   res.sendFile(__dirname + "/new.html");
-// });
+app.use(express.urlencoded({ extended: false }));
 
-app.use(express.urlencoded());
+app.get("/new", (req, res) => {
+  res.sendFile(__dirname + "/new.html");
+});
 
 app.post("/new", (req, res) => {
-  res.send(req.name);
+  console.log(req.body);
 });
 
 // app.get("/user/:userid", (req, res) => {
