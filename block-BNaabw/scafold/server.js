@@ -1,20 +1,20 @@
 let express = require("express");
 let app = express();
 let logger = require("morgan");
-let cookieParser = express("cookie-parser");
+// let cookieParser = express("cookie-parser");
 
-// middlewares
+// // middlewares
 
-//build - in
+// //build - in
 
 app.use(express.json()); // capture json data
-app.use(express.urlencoded()); // capture forms data
+app.use(express.urlencoded({ extended: false })); // capture forms data
 app.use(express.static(__dirname + "public")); // handling static assets
 
 // 3rd party middlewares
 
-app.use(logger("div"));
-app.use(cookieParser());
+app.use(logger("dev"));
+// app.use(cookieParser());
 
 // error on client/server middlewares
 
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to website ");
 });
 
-app.get("/users", (req, res) => {
+app.get("/username", (req, res) => {
   res.send(" user is here! ");
 });
 
